@@ -39,5 +39,12 @@ public class Medico extends Funcionario {
     
         return this.especialidade;
     }
+    
+    @Override
+    
+     public double gerarBonus(){
+            return calculaSalario()*0.30;
+        }
+    
             
 }

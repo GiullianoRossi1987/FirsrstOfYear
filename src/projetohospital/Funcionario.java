@@ -13,6 +13,16 @@ public class Funcionario extends Pessoa {
     
     private int matricula;
     private String senha;
+    private double vlrHora;
+
+    public double getVlrHora() {
+        return vlrHora;
+    }
+
+    public void setVlrHora(double vlrHora) {
+        this.vlrHora = vlrHora;
+    }
+    
     
     public void setMatricula(int matricula){
         
@@ -35,6 +45,21 @@ public class Funcionario extends Pessoa {
         public String getSenha(){
         
             return this.senha;
+        }
+        
+        public double calculaSalario(){
+        
+            return vlrHora*30;
+        }
+        
+        public double calculaSalario(double descontos){
+        
+            return (vlrHora*30)- descontos;
+        
+        }
+        
+        public double gerarBonus(){
+            return calculaSalario()*0.10;
         }
     
 }
