@@ -5,6 +5,8 @@
  */
 package projetohospital;
 
+import java.sql.Connection;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Aluno02
@@ -13,6 +15,14 @@ public class Principal {
 
  
     public static void main(String[] args) {
+        try{
+            Connection con = new ConnectionFactory().getConnection();
+            JOptionPane.showMessageDialog(null,"Conectado");
+            con.close();
+        }
+        catch(Exception e){
+            JOptionPane.showConfirmDialog(null, e);
+        }
         Paciente p = new Paciente();
         Funcionario f = new Funcionario();
         Enfermeiro e = new Enfermeiro();
