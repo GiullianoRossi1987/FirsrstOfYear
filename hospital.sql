@@ -21,7 +21,7 @@ use hospital;
  
  );
  
- create table funcionarios(
+ create table funcionario(
  id int auto_increment primary key,
  hospital int,
  nome varchar(50) not null,
@@ -51,7 +51,7 @@ use hospital;
  
  );
  
- create table enfermeiros(
+ create table enfermeiro(
  id int auto_increment primary key,
  funcionario int,
  corem varchar(45) not null,
@@ -59,4 +59,6 @@ use hospital;
  
  );
  
+ 
+ drop database hospital;
  
