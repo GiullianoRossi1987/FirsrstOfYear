@@ -14,25 +14,17 @@ public class Enfermeiro extends Funcionario {
     private String corem;
     
     public void setCorem(String corem){
-        
-        if (corem != ""){
-            
+        if (corem.length() != 0){
             this.corem = corem;
         }
     }
     
     public String getCorem(){
-    
         return this.corem;
     } 
     
     @Override
-    
-     public double gerarBonus(){
-            return calculaSalario()*0.20;
-        }
-            
-          
-        
-    
+    public double gerarBonus(){
+        return calculaSalario()*0.20;
+    }
 }
