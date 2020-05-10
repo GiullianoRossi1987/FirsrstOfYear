@@ -27,15 +27,14 @@ public class Funcionario extends Pessoa {
     public void setMatricula(int matricula){
         
             this.matricula = matricula;
-        }
+    }
         
         public void setSenha(String senha){
         
-            if (senha != ""){
-            
+            if (senha.length() != 0){
                 this.senha = senha;
             }
-        }
+    }
         
         public int getMatricula(){
         
@@ -49,12 +48,12 @@ public class Funcionario extends Pessoa {
         
         public double calculaSalario(){
         
-            return vlrHora*30;
+            return this.vlrHora*30;
         }
         
         public double calculaSalario(double descontos){
         
-            return (vlrHora*30)- descontos;
+            return this.calculaSalario - descontos;
         
         }
         
