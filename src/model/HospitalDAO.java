@@ -9,12 +9,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.lang.Exception;
         
 
 public class HospitalDAO {
-    private Connection con = new ConnectionFactory().getConnection();
+    protected Connection con = new ConnectionFactory().getConnection();
     
-    public void cadastrar(Hospital hospital){
+    public static class ErroInterno extends Exception{
+        public ErroInterno(String message){ super(message);}
+    }
+    
+    public void cadastrar(Hospital hospital) throws ErroInterno{
         try{
             String query = "insert into hospital (nome,endereco) values (?,?) ";
             
@@ -22,27 +27,26 @@ public class HospitalDAO {
             preparedStmt.setString(1, hospital.getNomeHospital());
             preparedStmt.setString(2, hospital.getEndereco());
             
-            preparedStmt.execute();
+            preparedStmt.executeUpdate();
             
             con.close();
-        }catch(Exception e){}
+        }catch(Exception e){ throw new ErroInterno(e.getMessage());}
     }
     
-    public ArrayList<Hospital> buscar(){
-        ArrayList<Hospital> ah = new ArrayList(); 
+    public ArrayList<Hospital> buscar() throws ErroInterno{
+        ArrayList<Hospital> ah = new ArrayList<Hospital>(); 
         try{
             String query = "select * from hospital;";
             PreparedStatement preparedStmt = con.prepareStatement(query);
-            ResultSet rs = preparedStmt.executeQuery(query);
+            ResultSet rs = preparedStmt.executeQuery();  // <Giulliano> Nao precisa de parametro no executeQuery
             
             while(rs.next()){
                 Hospital h = new Hospital(rs.getString("nome"));
                 h.setIdHospital(rs.getInt("id"));
-                
                 ah.add(h);
             }
             
-        }catch(Exception e){}
+        }catch(Exception e){ throw new ErroInterno(e.getMessage());}
         
         return ah;
     }
