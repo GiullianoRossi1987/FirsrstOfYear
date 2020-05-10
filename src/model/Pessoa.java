@@ -1,4 +1,3 @@
-
 package model;
 
 public abstract class Pessoa {
@@ -9,52 +8,32 @@ public abstract class Pessoa {
     private int idade;
 
     public void setNome(String nome){
-    
-        if (nome!=""){
+        if (nome.length() != 0){
             this.nome = nome;
         }
-        else{}
     }
     
-      public void setRg(String rg){
-    
-        if (rg!=""){
-            this.rg = rg;
-        }
-        else{}
+    public void setRg(String rg){
+        if (rg.length() != 0) this.rg = rg;
     }
       
-      public void setCpf(String cpf){
-          
-    
-        if (cpf!=""){
+    public void setCpf(String cpf){
+        if (cpf.length() != 0 || cpf.indexOf(".") != -1){  // <Giulliano> Esse indexOf vai verificar se tem o '.' no CPF, se nao tiver ele vai retornar o valor -1. Ai e so checkar e pronto
             this.cpf = cpf;
         }
-        else{}
     }
       
-      public void setIdade(int idade){
-          
-          this.idade = idade;
-      }
+    public void setIdade(int idade){
+        if(idade > 0) this.idade = idade;
+    }
       
-      public String getNome(){
-        
+     public String getNome(){
         return this.nome;
     } 
-      public String getCpf(){
-          
-          return this.cpf;
-      }
+      public String getCpf(){ return this.cpf; }
       
-      public String getRg(){
-      
-          return this.rg;
-      }
+      public String getRg(){ return this.rg; }
    
-      public int getIdade(){
-      
-          return this.idade;
-      }
+      public int getIdade(){ return this.idade; }
       
 }
