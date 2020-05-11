@@ -16,7 +16,7 @@ public class Hospital {
     private String nomeHospital;
     private int idHospital;
     private String endereco;
-    private ArrayList<Funcionario> funcionarios = new ArrayList<>();
+    private ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
     
     public int getIdHospital() {
         return idHospital;
