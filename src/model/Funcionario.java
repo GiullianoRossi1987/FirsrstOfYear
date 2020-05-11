@@ -53,7 +53,7 @@ public class Funcionario extends Pessoa {
         
         public double calculaSalario(double descontos){
         
-            return this.calculaSalario - descontos;
+            return this.calculaSalario() - descontos;
         
         }
         
