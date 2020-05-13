@@ -11,12 +11,12 @@ import model.HospitalDAO;
 
 
 public class ControllerHospital {
-    public void CadastrarHospital(Hospital hospital) throws HospitalDAO.ErroInterno{
+    public void CadastrarHospital(Hospital hospital){
         HospitalDAO hDAO = new HospitalDAO();
         hDAO.cadastrar(hospital);
     }
     
-    public ArrayList<Hospital> listarHospital() throws HospitalDAO.ErroInterno{
+    public ArrayList<Hospital> listarHospital(){
         HospitalDAO hDAO = new HospitalDAO();
         return hDAO.buscar();
     }

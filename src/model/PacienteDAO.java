@@ -14,11 +14,9 @@ import java.lang.Exception;
 public class PacienteDAO {
      protected Connection con = new ConnectionFactory().getConnection();/*Iginora o erro, não afeta em nada*/
     
-    public static class ErroInterno extends Exception{
-        public ErroInterno(String message){ super(message);}
-    }
+  
     
-    public void cadastrar(Paciente paciente) throws ErroInterno{
+    public void cadastrar(Paciente paciente){
         try{
             String query = "insert into pacientes (hospital,nome,cpf,rg,idade,senha) values (?,?) ";
             
@@ -33,10 +31,10 @@ public class PacienteDAO {
             preparedStmt.executeUpdate();
             
             con.close();
-        }catch(Exception e){ throw new ErroInterno(e.getMessage());}
+        }catch(Exception e){throw new RuntimeException(e.getMessage());}
     }
     
-    public ArrayList<Paciente> buscar() throws ErroInterno{
+    public ArrayList<Paciente> buscar(){
         ArrayList<Paciente> ph = new ArrayList<Paciente>(); 
         try{
             String query = "select * from pacientes;";
@@ -44,12 +42,12 @@ public class PacienteDAO {
             ResultSet rs = preparedStmt.executeQuery();  // <Giulliano> Nao precisa de parametro no executeQuery
             
             while(rs.next()){
-                Paciente p = new Paciente(rs.getString("nome"));
+                Paciente p = new Paciente();
                 p.setCodPaciente(rs.getInt("id"));
                 ph.add(p);
             }
             
-        }catch(Exception e){ throw new ErroInterno(e.getMessage());}
+        }catch(Exception e){throw new RuntimeException(e.getMessage());}
         
         return ph;
     }

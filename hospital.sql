@@ -59,6 +59,8 @@ use hospital;
  
  );
  
- select * from pacientes;
+
+ 
+ 
 
  

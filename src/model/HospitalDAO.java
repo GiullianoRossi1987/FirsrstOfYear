@@ -15,11 +15,9 @@ import java.lang.Exception;
 public class HospitalDAO {
     protected Connection con = new ConnectionFactory().getConnection();
     
-    public static class ErroInterno extends Exception{
-        public ErroInterno(String message){ super(message);}
-    }
+   
     
-    public void cadastrar(Hospital hospital) throws ErroInterno{
+    public void cadastrar(Hospital hospital) {
         try{
             String query = "insert into hospital (nome,endereco) values (?,?) ";
             
@@ -30,10 +28,10 @@ public class HospitalDAO {
             preparedStmt.executeUpdate();
             
             con.close();
-        }catch(Exception e){ throw new ErroInterno(e.getMessage());}
+        }catch(Exception e){throw new RuntimeException(e.getMessage());}
     }
     
-    public ArrayList<Hospital> buscar() throws ErroInterno{
+    public ArrayList<Hospital> buscar(){
         ArrayList<Hospital> ah = new ArrayList<Hospital>(); 
         try{
             String query = "select * from hospital;";
@@ -46,7 +44,7 @@ public class HospitalDAO {
                 ah.add(h);
             }
             
-        }catch(Exception e){ throw new ErroInterno(e.getMessage());}
+        }catch(Exception e){throw new RuntimeException(e.getMessage());}
         
         return ah;
     }

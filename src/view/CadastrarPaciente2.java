@@ -214,7 +214,8 @@ public class CadastrarPaciente2 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Hospital h = (Hospital)cmbHospital.getSelectedItem();
         JOptionPane.showMessageDialog(rootPane, h.getIdHospital());
-        Paciente p = new Paciente(nome.getText());
+        Paciente p = new Paciente();
+        p.setNome(nome.getText());
         p.setCpf(cpf.getText());
         p.setIdade(Integer.parseInt(idade.getText()));
         p.setSenha(senha.getText());
@@ -223,8 +224,8 @@ public class CadastrarPaciente2 extends javax.swing.JFrame {
         ControllerPaciente cp = new ControllerPaciente();
         try {
             cp.CadastrarPaciente(p);
-        } catch (PacienteDAO.ErroInterno ex) {
-            Logger.getLogger(CadastrarPaciente2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(CadastrarPaciente2.class.getName()).log(Level.SEVERE, null, e);
         }
         
         

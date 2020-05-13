@@ -116,8 +116,8 @@ public class CadastrarHospital2 extends javax.swing.JFrame {
         ControllerHospital ch = new ControllerHospital();
         try {
             ch.CadastrarHospital(h);
-        } catch (HospitalDAO.ErroInterno ex) {
-            Logger.getLogger(CadastrarHospital2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(CadastrarHospital2.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

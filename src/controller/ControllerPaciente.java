@@ -15,12 +15,12 @@ import model.PacienteDAO;
  */
 public class ControllerPaciente {
     
-    public void CadastrarPaciente(Paciente paciente) throws PacienteDAO.ErroInterno{
+    public void CadastrarPaciente(Paciente paciente){
         PacienteDAO pDAO = new PacienteDAO();
         pDAO.cadastrar(paciente);
     }
     
-    public ArrayList<Paciente> listarPaciente() throws PacienteDAO.ErroInterno{
+    public ArrayList<Paciente> listarPaciente(){
         PacienteDAO pDAO = new PacienteDAO();
         return pDAO.buscar();
     }
