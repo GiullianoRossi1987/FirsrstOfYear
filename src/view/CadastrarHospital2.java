@@ -6,7 +6,10 @@
 package view;
 
 import controller.ControllerHospital;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Hospital;
+import model.HospitalDAO;
 
 /**
  *
@@ -44,8 +47,6 @@ public class CadastrarHospital2 extends javax.swing.JFrame {
             }
         });
 
-        nome.setText("jTextField1");
-
         jLabel3.setText("Endereço:");
 
         jButton1.setText("Cadastrar");
@@ -65,12 +66,11 @@ public class CadastrarHospital2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(329, 329, 329)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(346, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(329, 329, 329)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(327, 327, 327)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -114,7 +114,11 @@ public class CadastrarHospital2 extends javax.swing.JFrame {
         Hospital h = new Hospital(nome.getText());
         h.setEndereco(endereco.getText());
         ControllerHospital ch = new ControllerHospital();
-        ch.CadastrarHospital(h);
+        try {
+            ch.CadastrarHospital(h);
+        } catch (HospitalDAO.ErroInterno ex) {
+            Logger.getLogger(CadastrarHospital2.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

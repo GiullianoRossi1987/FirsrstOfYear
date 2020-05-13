@@ -17,7 +17,7 @@ import view.CadastrarPaciente2;
 public class Principal {
 
  
-    public static void main(String[] args) {
+       public static void main(String[] args) {
         try{
             Connection con = new ConnectionFactory().getConnection();
             JOptionPane.showMessageDialog(null,"Conectado");

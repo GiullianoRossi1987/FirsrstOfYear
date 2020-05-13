@@ -13,7 +13,8 @@ public class Paciente extends Pessoa{
 
         private int codPaciente;
         private String senha;
-        
+
+
         
         public void setCodPaciente(int codPaciente){
         
