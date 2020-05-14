@@ -12,14 +12,14 @@ import java.util.ArrayList;
 import java.lang.Exception;
 
 public class PacienteDAO {
-     protected Connection con = new ConnectionFactory().getConnection();/*Iginora o erro, não afeta em nada*/
+     // protected Connection con = new ConnectionFactory().getConnection();/*Iginora o erro, não afeta em nada*/
     
   
     
     public void cadastrar(Paciente paciente){
         try{
             String query = "insert into pacientes (hospital,nome,cpf,rg,idade,senha) values (?,?) ";
-            
+            Connection con = new ConnectionFactory().getConnection();
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString(1, paciente.getNome());
             preparedStmt.setString(2, paciente.getCpf());
@@ -38,6 +38,7 @@ public class PacienteDAO {
         ArrayList<Paciente> ph = new ArrayList<Paciente>(); 
         try{
             String query = "select * from pacientes;";
+            Connection con = new ConnectionFactory().getConnection();
             PreparedStatement preparedStmt = con.prepareStatement(query);
             ResultSet rs = preparedStmt.executeQuery();  // <Giulliano> Nao precisa de parametro no executeQuery
             
