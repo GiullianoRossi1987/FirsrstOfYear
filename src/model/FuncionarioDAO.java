@@ -13,36 +13,40 @@ import java.lang.Exception;
 import java.sql.SQLException;
         
 
-public class HospitalDAO {
+public class FuncionarioDAO {
     // MUDA: protected Connection con = new ConnectionFactory().getConnection();
     // Se continuasse com esse atributo ele ia fazer so uma 
    
-    
-    public void cadastrar(Hospital hospital) {
+    Funcionario f = new Funcionario();
+    public void cadastrar(Funcionario funcionario) {
         try{
-            String query = "insert into hospital (nome,endereco) values (?,?) ";
+            String query = "insert into funcionario (nome,cpf,rg,idade,senha,vlHora) values (?,?) ";
             try (Connection con = new ConnectionFactory().getConnection()) {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
-                preparedStmt.setString(1, hospital.getNomeHospital());
-                preparedStmt.setString(2, hospital.getEndereco());
+                preparedStmt.setString(1, f.getNome());
+                preparedStmt.setString(2, f.getCpf());
+                preparedStmt.setString(3, f.getRg());
+                preparedStmt.setInt(4, f.getIdade());
+                preparedStmt.setString(5, f.getSenha());
+                preparedStmt.setDouble(6, f.getVlrHora());
+                
                 
                 preparedStmt.executeUpdate();
             }
         }catch(RuntimeException | ClassNotFoundException | SQLException e){throw new RuntimeException(e.getMessage());}
     }
     
-    public ArrayList<Hospital> buscar(){
-        ArrayList<Hospital> ah = new ArrayList<Hospital>(); 
+    public ArrayList<Funcionario> buscar(){
+        ArrayList<Funcionario> ah = new ArrayList<Funcionario>(); 
         try{
             Connection con = new ConnectionFactory().getConnection();
-            String query = "select * from hospital;";
+            String query = "select * from funcionario;";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             ResultSet rs = preparedStmt.executeQuery();  // <Giulliano> Nao precisa de parametro no executeQuery
             
             while(rs.next()){
-                Hospital h = new Hospital(rs.getString("nome"));
-                h.setIdHospital(rs.getInt("id"));
-                ah.add(h);
+                f.setMatricula(rs.getInt("id"));
+                ah.add(f);
             }
             
         }catch(RuntimeException | ClassNotFoundException | SQLException e){throw new RuntimeException(e.getMessage());}

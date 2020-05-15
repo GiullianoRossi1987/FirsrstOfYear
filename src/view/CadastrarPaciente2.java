@@ -86,6 +86,11 @@ public class CadastrarPaciente2 extends javax.swing.JFrame {
         jLabel2.setText("Nome:");
 
         cmbHospital.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbHospitalActionPerformed(evt);
+            }
+        });
 
         nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,14 +218,13 @@ public class CadastrarPaciente2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Hospital h = (Hospital)cmbHospital.getSelectedItem();
-        JOptionPane.showMessageDialog(rootPane, h.getIdHospital());
         Paciente p = new Paciente();
+        JOptionPane.showMessageDialog(rootPane, h.getIdHospital());      
         p.setNome(nome.getText());
         p.setCpf(cpf.getText());
+        p.setRg(rg.getText());
         p.setIdade(Integer.parseInt(idade.getText()));
         p.setSenha(senha.getText());
-        p.setRg(rg.getText());
-        
         ControllerPaciente cp = new ControllerPaciente();
         try {
             cp.CadastrarPaciente(p);
@@ -232,6 +236,10 @@ public class CadastrarPaciente2 extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmbHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbHospitalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbHospitalActionPerformed
 
     /**
      * @param args the command line arguments

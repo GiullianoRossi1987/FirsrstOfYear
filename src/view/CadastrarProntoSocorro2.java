@@ -57,6 +57,11 @@ public class CadastrarProntoSocorro2 extends javax.swing.JFrame {
         jButton1.setText("Cadastrar");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel4.setText("Cadastrar Pronto Socorro");
 
@@ -123,6 +128,10 @@ public class CadastrarProntoSocorro2 extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

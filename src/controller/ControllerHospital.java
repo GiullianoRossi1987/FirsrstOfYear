@@ -11,6 +11,7 @@ import model.HospitalDAO;
 
 
 public class ControllerHospital {
+    
     public void CadastrarHospital(Hospital hospital){
         HospitalDAO hDAO = new HospitalDAO();
         hDAO.cadastrar(hospital);

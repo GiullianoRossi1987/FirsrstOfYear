@@ -47,7 +47,19 @@ public class CadastrarHospital2 extends javax.swing.JFrame {
             }
         });
 
+        nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomeActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Endereço:");
+
+        endereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enderecoActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Cadastrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +133,14 @@ public class CadastrarHospital2 extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeActionPerformed
+
+    private void enderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enderecoActionPerformed
 
     /**
      * @param args the command line arguments

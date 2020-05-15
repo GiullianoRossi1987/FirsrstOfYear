@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import model.Paciente;
 import model.PacienteDAO;
 
-/**
- *
- * @author fefem
- */
+
 public class ControllerPaciente {
     
     public void CadastrarPaciente(Paciente paciente){
